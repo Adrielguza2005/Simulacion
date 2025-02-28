@@ -1,0 +1,74 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyP3a4aBBgPTlk6vdfQUyYOh",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Adrielguza2005/Simulacion/blob/main/Tarea%201%20Unidad2\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 23,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "LAtiDG9X6pcn",
+        "outputId": "14b06ddb-0b9d-42c0-d05c-67e9627bee4c"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[22, 21, 14, 11, 13, 4, 10, 6, 1, 12, 20, 7, 8, 15, 18, 16, 2, 19, 0, 5, 17, 9, 22, 21, 14, 11, 13, 4, 10, 6, 1, 12, 20, 7, 8, 15, 18, 16, 2, 19, 0, 5, 17, 9, 22, 21, 14, 11, 13, 4, 10, 6, 1, 12, 20, 7, 8, 15, 18, 16, 2, 19, 0, 5, 17, 9, 22, 21, 14, 11, 13, 4, 10, 6, 1, 12, 20, 7, 8, 15, 18, 16, 2, 19, 0, 5, 17, 9, 22, 21, 14, 11, 13, 4, 10, 6, 1, 12, 20, 7]\n"
+          ]
+        }
+      ],
+      "source": [
+        "#Adriel Gutiérrez Zaldivar\n",
+        "#Tarea 1 Unidad 2 SIMULACION\n",
+        "# Se define la función para generar los números pseudoaleatorios\n",
+        "def generacion_nums(n, X0, a, c, m):\n",
+        "    numeros = []\n",
+        "    Xn = X0\n",
+        "\n",
+        "    # Ciclo para generar los números y que se guarden en la lista\n",
+        "    for _ in range(n):\n",
+        "        Xn = (a * Xn + c) % m  # Aplica la fórmula\n",
+        "        numeros.append(Xn)\n",
+        "\n",
+        "    return numeros\n",
+        "# Parámetros del generador\n",
+        "X0 = 9\n",
+        "a = 7\n",
+        "c = 5\n",
+        "m = 23\n",
+        "\n",
+        "# Generar e imprimir los 100 números pseudoaleatorios\n",
+        "numeros_aleatorios = generacion_nums(100, X0, a, c, m)\n",
+        "print(numeros_aleatorios)"
+      ]
+    }
+  ]
+}
