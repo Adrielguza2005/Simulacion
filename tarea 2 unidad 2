@@ -1,0 +1,75 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Adrielguza2005/Simulacion/blob/main/tarea%202%20unidad%202\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "from scipy.stats import ks_1samp, uniform\n",
+        "\n",
+        "# Generar 100 números aleatorios en un rango diferente de [0,1], por ejemplo [10, 50]\n",
+        "a, b = 10, 50  # Límites del intervalo\n",
+        "random_numbers = np.random.uniform(a, b, 100)\n",
+        "\n",
+        "# Función de distribución acumulativa teórica de una uniforme en [a, b]\n",
+        "def uniform_cdf(x):\n",
+        "    return uniform.cdf(x, loc=a, scale=b-a)\n",
+        "\n",
+        "# Aplicar la prueba de Kolmogorov-Smirnov\n",
+        "ks_statistic, p_value = ks_1samp(random_numbers, uniform_cdf)\n",
+        "\n",
+        "# Mostrar resultados\n",
+        "print(f'Estadístico KS: {ks_statistic}')\n",
+        "print(f'Valor p: {p_value}')\n",
+        "\n",
+        "# Interpretación del resultado\n",
+        "alfa = 0.05  # Nivel de significancia\n",
+        "if p_value > alfa:\n",
+        "    print(\"No se rechaza la hipótesis nula: los datos pueden seguir una distribución uniforme.\")\n",
+        "else:\n",
+        "    print(\"Se rechaza la hipótesis nula: los datos no siguen una distribución uniforme.\")\n"
+      ],
+      "metadata": {
+        "id": "SsVMDRaUgMTq",
+        "outputId": "64cd9ae5-9370-4f97-f8f4-072b738694e4",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 31,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Estadístico KS: 0.0681216177485206\n",
+            "Valor p: 0.7161345647906028\n",
+            "No se rechaza la hipótesis nula: los datos pueden seguir una distribución uniforme.\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Te damos la bienvenida a Colaboratory",
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
